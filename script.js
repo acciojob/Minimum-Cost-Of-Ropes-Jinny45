@@ -1,18 +1,21 @@
-function minCostFormRope() {
-  //your code here
-	a.preventDefault();
-	var inputElement = document.querySelector('input').value;
-	var arr = inputElement.split(',');
-	arr.sort(function(a,b){return a-b});
-     while(arr.length>1){
-		 var res = Number(arr[0]) + Number(arr[1]);
-		 arr.splice(0,2);
-		 aee.push(res);
-		 cost+=res;
-		 arr.sort(function(a,b){return a-b});
-	 }
-	document.getElementById("result").textContent = cost;
-  
-  
-  
-}  
+unction calculateMinCost(){
+	let ropelengthsStr=document.getElementById('rope-lengths').value;
+	let ropelengthsArr=ropelengthsStr.split(",").map(Number);
+	let n=ropelengthsArr.length;
+
+let pq=[];
+	for(let i=0;i<n;i++){
+		pq.push(ropelengthsArr[i]);
+	}
+pq.sort((a,b)=>a-b);
+
+let res=0;
+while(pq.length>1){
+	let first=pq.shift();
+	let second= pq.shift();
+	res+=first+second;
+	pq.push(first+second);
+	pq.sort((a,b)=>a-b);
+}
+	document.getElementById('result').textContent=res;
+}
